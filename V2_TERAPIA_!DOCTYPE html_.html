@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTerapia para Bebés - Verónica Gil</title>
+    <style>
+        /* --- ESTILOS CSS EMBEBIDOS --- */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Light Cyan */
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 960px;
+            width: 95%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            max-width: 400px;
+            height: auto;
+        }
+
+        header h1 {
+            color: #add8e6; /* Light Blue */
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #777;
+            font-style: italic;
+        }
+
+        nav {
+            background-color: #e0f7fa; /* Light Teal */
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            color: #00acc1; /* Teal */
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #b2ebf2; /* Light Cyan */
+            border-radius: 5px;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            color: #8f7ae5; /* Lavender */
+            margin-top: 0;
+            border-bottom: 2px solid #d9d9d9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .profile-info {
+            line-height: 1.8;
+        }
+
+        .profile-info strong {
+            font-weight: bold;
+            color: #5bc0de; /* Turquoise */
+        }
+
+        .specialties-accordion .specialty-item {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .specialties-accordion .specialty-title {
+            background-color: #ffe4e1; /* Light Coral */
+            color: #ff69b4; /* Hot Pink */
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .specialties-accordion .specialty-title:hover {
+            background-color: #f8bbd0; /* Light Pink */
+        }
+
+        .specialties-accordion .specialty-content {
+            padding: 15px;
+            background-color: #f9f9f9;
+            display: none;
+        }
+
+        .services-accordion .service-item {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .services-accordion .service-title {
+            background-color: #f0fff0; /* Honeydew */
+            color: #2e8b57; /* Sea Green */
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            animation: pulse 1.5s infinite alternate; /* Efecto llamativo */
+        }
+
+        .services-accordion .service-title:hover {
+            background-color: #e0eee0; /* Light Slate Gray */
+        }
+
+        .services-accordion .service-content {
+            padding: 15px;
+            background-color: #f9f9f9;
+            display: none;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .appointment-form input[type="text"],
+        .appointment-form input[type="email"],
+        .appointment-form input[type="tel"],
+        .appointment-form input[type="number"],
+        .appointment-form input[type="date"],
+        .appointment-form input[type="time"],
+        .appointment-form textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .appointment-form button {
+            background-color: #98fb98; /* Pale Green */
+            color: #333;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .appointment-form button:hover {
+            background-color: #8fbc8f; /* Dark Sea Green */
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .transparent-image {
+            max-width: 100%;
+            height: auto;
+            opacity: 0.8;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para móviles */
+        @media (max-width: 600px) {
+            .container {
+                width: 98%;
+                margin: 10px auto;
+                padding: 15px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin-bottom: 5px;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a {
+                padding: 10px;
+            }
+        }
+
+        /* Sombras sutiles */
+        .container, section, .specialties-accordion .specialty-item, .services-accordion .service-item, .appointment-form input, .appointment-form textarea, .appointment-form button {
+            box-shadow: 2px 2px 5px #ddd;
+        }
+
+        /* Bordes redondeados */
+        .container, section, .specialties-accordion .specialty-item, .services-accordion .service-item, .appointment-form input, .appointment-form textarea, .appointment-form button, nav {
+            border-radius: 8px;
+        }
+
+        /* Animación para el efecto llamativo de los servicios */
+        @keyframes pulse {
+            0% {
+                background-color: #f0fff0;
+                color: #2e8b57;
+            }
+            100% {
+                background-color: #aaffaa; /* Light Green */
+                color: #006400; /* Dark Green */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/logo_veronica_gil_horizontal.png" alt="Logo Verónica Gil" class="logo">
+            </div>
+            <h1>AquaTerapia para Bebés</h1>
+            <p><i>Confianza y crecimiento en cada brazada</i></p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#quien-soy">¿Quién Soy?</a></li>
+                <li><a href="#mision-valores">Misión y Valores</a></li>
+                <li><a href="#vision">Visión</a></li>
+                <li><a href="#especialidades">Especialidades</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#agendar-cita">Agendar Cita</a></li>
+            </ul>
+        </nav>
+
+        <section id="quien-soy">
+            <h2>¿Quién Soy?</h2>
+            <div class="profile-info">
+                <h3>VERONICA GIL</h3>
+                <p><strong>PSICOLOGA</strong></p>
+                <p><strong>DEPORTISTA DE ALTO RENDIMIENTO</strong></p>
+                <p><strong>Confianza y crecimiento en cada brazada:</strong> En una combinación de la psicología y la natación de alto rendimiento; así como la pasión por los bebés y sus cualidades. He buscado la forma de aprovechar el agua como medio para realizar una metodología de estimulación temprana. Donde el bebé no solo será más activo, aprenderá a contener la respiración bajo el agua, flotar y desplazarse sin ninguna ayuda.</p>
+            </div>
+            <img src="https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/bebe_nadando_transparente.png" alt="Bebé Nadando" class="transparent-image" style="float: right; max-width: 150px; margin-left: 15px;">
+        </section>
+
+        <section id="mision-valores">
+            <h2>Misión y Valores de Vero</h2>
+            <p>Brindar un ambiente seguro y enriquecedor para que personas de todas las edades, desde bebés hasta niños con necesidades especiales, puedan descubrir la confianza y seguridad en el agua. A través de técnicas personalizadas y un enfoque cariñoso, ayudamos a que cada alumno se desarrolle física y emocionalmente, construyendo habilidades de vida que fortalecen su autoestima y fomentan el vínculo familiar.</p>
+            <img src="https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/bebe_madre_tina_transparente.png" alt="Bebé con Madre" class="transparent-image">
+        </section>
+
+        <section id="vision">
+            <h2>Visión</h2>
+            <p>Ser un profesional referente por excelencia, reconocido por el trato humano y el compromiso con la primera experiencia del bebé y su madre a través de un medio como el agua.</p>
+            <img src="https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/bebes_alberca_transparente.png" alt="Bebés en Alberca" class="transparent-image">
+        </section>
+
+        <section id="especialidades" class="specialties-accordion">
+            <h2>Especialidades</h2>
+            <div class="specialty-item">
+                <div class="specialty-title" onclick="toggleAccordion('confianza')">
+                    CONFIANZA Y EMPODERAMIENTO
+                    <span>&#9660;</span>
+                </div>
+                <div id="confianza" class="specialty-content">
+                    <p>Fomentar la seguridad y confianza en los niños mientras aprenden a dominar el agua, un ambiente que inicialmente puede parecer hostil.</p>
+                </div>
+            </div>
+            <div class="specialty-item">
+                <div class="specialty-title" onclick="toggleAccordion('desarrollo')">
+                    DESARROLLO INTEGRAL
+                    <span>&#9660;</span>
+                </div>
+                <div id="desarrollo" class="specialty-content">
+                    <p>La natación no solo como una habilidad física, sino como un medio para fortalecer la autoestima y el bienestar emocional.</p>
+                </div>
+            </div>
+            <div class="specialty-item">
+                <div class="specialty-title" onclick="toggleAccordion('inclusion')">
+                    INCLUSIÓN Y ADAPTABILIDAD
+                    <span>&#9660;</span>
+                </div>
+                <div id="inclusion" class="specialty-content">
+                    <p>Aceptar y adaptar las técnicas para todas las habilidades, incluyendo el trabajo dedicado a niños con discapacidades.</p>
+                </div>
+            </div>
+            <div class="specialty-item">
+                <div class="specialty-title" onclick="toggleAccordion('cuidado')">
+                    CUIDADO Y CONEXIÓN FAMILIAR
+                    <span>&#9660;</span>
+                </div>
+                <div id="cuidado" class="specialty-content">
+                    <p>Destacar la importancia de la estimulación acuática, permitiendo que los padres, especialmente las madres, conecten profundamente con sus bebés.</p>
+                </div>
+            </div>
+            <div class="specialty-item">
+                <div class="specialty-title" onclick="toggleAccordion('que-sigue')">
+                    ¿Qué sigue?
+                    <span>&#9660;</span>
+                </div>
+                <div id="que-sigue" class="specialty-content">
+                    <p>Información sobre la continuidad del aprendizaje y los próximos pasos en el desarrollo acuático del bebé.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="services-accordion">
+            <h2>Servicios</h2>
+            <div class="service-item">
+                <div class="service-title" onclick="toggleAccordion('presencial')">
+                    SERVICIO PRESENCIAL: clases personalizadas en casa
+                    <span>&#9660;</span>
+                </div>
+                <div id="presencial" class="service-content">
+                    <p>Llevamos la experiencia de la natación a la comodidad de tu hogar. Clases personalizadas para todas las edades, adaptadas a cada nivel y necesidad, desde la construcción de confianza para los pequeños hasta técnicas especializadas para niños con discapacidades. Un enfoque seguro y empático, guiado por una instructora con experiencia profesional.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-title" onclick="toggleAccordion('virtual')">
+                    SERVICIO VIRTUAL: estimulación acuática para mamás y bebés
+                    <span>&#9660;</span>
+                </div>
+                <div id="virtual" class="service-content">
+                    <p>Una experiencia única de estimulación acuática desde la comodidad de tu hogar, diseñada para madres y bebés. A través de sesiones virtuales guiadas, aprende técnicas de conexión y seguridad en el agua, fortaleciendo el vínculo y desarrollando habilidades esenciales para tu bebé.</p>
+                    <h3>¿CÓMO SERÁN LAS CLASES?</h3>
+                    <ul>
+                        <li><strong>Duración de la Clase:</strong> Cada sesión tiene una duración de 40 minutos, asegurando suficiente tiempo para que las mamás y sus bebés disfruten de los ejercicios y se adapten al agua de manera tranquila y natural.</li>
+                        <li><strong>Edad Recomendada:</strong> Las clases son ideales para recién nacidos hasta 2 años, una etapa crucial para el desarrollo físico y emocional.</li>
+                        <li><strong>Participación de Mamá:</strong> Cada actividad está diseñada para ser realizada junto con la mamá, fortaleciendo el vínculo y brindando a ambos una experiencia significativa.</li>
+                    </ul>
+                    <h3>BENEFICIOS:</h3>
+                    <ol>
+                        <li><strong>Fortalecimiento del Vínculo Mamá-Bebé:</strong> Las clases permiten una conexión única, donde el contacto cercano y los movimientos acuáticos crean un ambiente de confianza y seguridad entre la madre y el bebé.</li>
+                        <li><strong>Desarrollo Sensorial y Motor:
